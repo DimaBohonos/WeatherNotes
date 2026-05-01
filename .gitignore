@@ -1,0 +1,5 @@
+# Local API secrets (copy from Secrets.example.plist)
+WeatherNotes/Secrets.plist
+
+**/xcuserdata/
+**/*.xcuserstate
