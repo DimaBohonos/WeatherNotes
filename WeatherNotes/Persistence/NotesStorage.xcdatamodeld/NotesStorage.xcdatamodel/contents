@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+	<entity name="Note" representedClassName="Note" syncable="YES" codeGenerationType="class">
+		<attribute name="noteID" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+		<attribute name="body" optional="NO" attributeType="String"/>
+		<attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+		<attribute name="latitude" optional="NO" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+		<attribute name="longitude" optional="NO" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+		<attribute name="locationName" optional="NO" attributeType="String"/>
+		<attribute name="weatherDescriptionText" optional="NO" attributeType="String"/>
+		<attribute name="weatherSummaryMain" optional="NO" attributeType="String"/>
+		<attribute name="iconCode" optional="NO" attributeType="String"/>
+		<attribute name="temperatureCelsius" optional="NO" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+		<attribute name="feelsLikeCelsius" optional="NO" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+		<attribute name="humidityPercent" optional="NO" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+		<attribute name="windSpeedMs" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+		<attribute name="visibilityMeters" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+		<attribute name="pressureHpa" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+	</entity>
+</model>
