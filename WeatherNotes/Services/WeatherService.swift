@@ -19,10 +19,10 @@ final class WeatherService: WeatherServicing {
     }
 
     func fetchCurrentWeather(city query: String) async throws -> WeatherSnapshot {
-        let encoded = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? query
         var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: false)!
         components.queryItems = [
-            URLQueryItem(name: "q", value: encoded),
+            // URLQueryItem performs percent-encoding itself.
+            URLQueryItem(name: "q", value: query),
             URLQueryItem(name: "units", value: "metric"),
             URLQueryItem(name: "lang", value: "en"),
             URLQueryItem(name: "appid", value: try WeatherAPIKey.loadOpenWeatherKey())
