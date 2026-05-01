@@ -8,12 +8,6 @@ import SwiftUI
 struct NoteRowView: View {
     let item: NoteSummary
 
-    private static let relativeFormatter: RelativeDateTimeFormatter = {
-        let formatter = RelativeDateTimeFormatter()
-        formatter.unitsStyle = .abbreviated
-        return formatter
-    }()
-
     var body: some View {
         HStack(spacing: 12) {
             VStack(alignment: .leading, spacing: 4) {
@@ -21,7 +15,7 @@ struct NoteRowView: View {
                     .font(.body)
                     .lineLimit(2)
                     .foregroundStyle(.primary)
-                Text(Self.relativeFormatter.localizedString(for: item.createdAt, relativeTo: .now))
+                Text(item.createdAt.formatted(date: .abbreviated, time: .shortened))
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
