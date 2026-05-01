@@ -5,17 +5,18 @@
 //  Created by dima on 01.05.2026.
 //
 
+import CoreData
 import SwiftUI
 
 struct ContentView: View {
+    let viewContext: NSManagedObjectContext
+
+    init(viewContext: NSManagedObjectContext = PersistenceController.shared.viewContext) {
+        self.viewContext = viewContext
+    }
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        NotesListView(context: viewContext)
     }
 }
 
