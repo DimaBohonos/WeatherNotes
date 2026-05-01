@@ -8,10 +8,13 @@ import SwiftUI
 
 struct NotesListView: View {
     private let context: NSManagedObjectContext
+    private let weather: WeatherServicing
     @State private var viewModel: NotesListViewModel
+    @State private var isPresentingComposer = false
 
-    init(context: NSManagedObjectContext) {
+    init(context: NSManagedObjectContext, weather: WeatherServicing = WeatherService()) {
         self.context = context
+        self.weather = weather
         _viewModel = State(initialValue: NotesListViewModel(context: context))
     }
 
@@ -22,6 +25,21 @@ struct NotesListView: View {
                     NoteDetailView(noteID: noteID, context: context)
                 }
                 .navigationTitle("Weather notes")
+                .toolbar {
+                    ToolbarItem(placement: .primaryAction) {
+                        Button {
+                            isPresentingComposer = true
+                        } label: {
+                            Label("Add note", systemImage: "plus.circle.fill")
+                        }
+                        .accessibilityHint("Adds a note with current Kyiv weather.")
+                    }
+                }
+                .sheet(isPresented: $isPresentingComposer) {
+                    AddNoteView(context: context, weather: weather) {
+                        viewModel.refresh()
+                    }
+                }
         }
         .onAppear { viewModel.refresh() }
     }
@@ -38,7 +56,7 @@ struct NotesListView: View {
             ContentUnavailableView(
                 "No notes yet",
                 systemImage: "note.text",
-                description: Text("Notes you save will appear here.")
+                description: Text("Tap + to add a note—we'll attach the Kyiv-area weather.")
             )
         } else {
             List {
